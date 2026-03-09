@@ -26,6 +26,16 @@
 
   /* Proceso — ocultar línea conectora */
   .process-steps::before { display: none; }
+
+  /* Problemas */
+  .problems-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Industrias */
+  .industries-grid { grid-template-columns: 1fr 1fr; }
+
+  /* WhatsApp float — solo ícono en tablet/mobile */
+  .wa-float span  { display: none; }
+  .wa-float       { padding: 0.85rem; border-radius: 50%; }
 }
 
 
@@ -37,6 +47,12 @@
 
   /* Hero */
   .hero-stats { gap: 1.5rem; }
+
+  /* Problemas */
+  .problems-grid { grid-template-columns: 1fr; }
+
+  /* Industrias */
+  .industries-grid { grid-template-columns: 1fr; }
 
   /* Footer */
   .footer-grid   { grid-template-columns: 1fr; }

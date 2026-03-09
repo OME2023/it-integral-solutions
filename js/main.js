@@ -100,11 +100,12 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 document.getElementById('contactForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const nombre  = document.getElementById('formNombre').value.trim();
-  const email   = document.getElementById('formEmail').value.trim();
-  const empresa = document.getElementById('formEmpresa').value.trim();
-  const tipo    = document.getElementById('formTipo').value;
-  const mensaje = document.getElementById('formMensaje').value.trim();
+  const nombre   = document.getElementById('formNombre').value.trim();
+  const email    = document.getElementById('formEmail').value.trim();
+  const telefono = document.getElementById('formTelefono').value.trim();
+  const empresa  = document.getElementById('formEmpresa').value.trim();
+  const tipo     = document.getElementById('formTipo').value;
+  const mensaje  = document.getElementById('formMensaje').value.trim();
 
   if (!nombre || !email) {
     alert('Por favor completá nombre y email.');
@@ -126,6 +127,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         reply_to: email,
         name: nombre,
         email: email,
+        telefono: telefono || '—',
         empresa: empresa || '—',
         tipo_proyecto: tipo || '—',
         mensaje: mensaje || '—'
@@ -158,5 +160,19 @@ document.getElementById('contactForm').addEventListener('submit', async function
 document.querySelectorAll('a[href^="http"]').forEach(link => {
   link.addEventListener('click', () => {
     window.ITANALYTICS.trackConversion('outbound-' + link.href);
+  });
+});
+
+// ——— FOOTER YEAR ———
+const footerYearEl = document.getElementById('footerYear');
+if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+
+// ——— FAQ ACCORDION ———
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
 });
